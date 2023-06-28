@@ -34,6 +34,43 @@ public:
         }
     }
 
+    void deletion()
+    {
+        if(size == 0)
+        {
+            
+            cout<<"Heap is empty"<<endl;
+            return;
+        }
+
+        arr[1] = arr[size];
+        size--;
+
+        int i = 1;
+        while (i<size)
+        {
+            int leftIndex = i*2;
+            int rightIndex = i*2+1;
+
+            if (leftIndex < size && arr[leftIndex] > arr[i])
+            {
+                swap(arr[i], arr[leftIndex]);
+                i = leftIndex;
+            }
+            else if(rightIndex < size && arr[rightIndex] > arr[i])
+            {
+                swap(arr[i], arr[rightIndex]);
+                i = rightIndex;
+            }
+            else
+            {
+                return;
+            }
+            
+        }
+        
+    }
+
     void print ()
     {
         for (int i = 1; i <= size; i++)
@@ -42,6 +79,8 @@ public:
         }
         
     }
+
+    
 };
 
 int main(int argc, char const *argv[])
@@ -51,6 +90,15 @@ int main(int argc, char const *argv[])
     h.insertion(12);
     h.insertion(58);
     h.insertion(76);
+    h.print();
+
+    cout<<endl;
+
+    h.deletion();
+    h.deletion();
+    h.deletion();
+    h.deletion();
+    h.deletion();
     h.print();
     return 0;
 }
