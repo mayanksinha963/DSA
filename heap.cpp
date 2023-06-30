@@ -1,4 +1,5 @@
 #include <iostream>
+#include<queue>
 using namespace std;
 
 class heap
@@ -91,12 +92,12 @@ void heapify(int arr[], int size, int i)
         int left = i*2;
         int right = i*2 +1;
 
-        if (left < size && arr[left]> arr[targeted])
+        if (left <= size && arr[left]> arr[targeted])
         {
             targeted = left;
         }
 
-        if (right < size && arr[right] > arr[targeted])
+        if (right <= size && arr[right] > arr[targeted])
         {
             targeted = right;
         }
@@ -110,6 +111,20 @@ void heapify(int arr[], int size, int i)
         
 
     }
+
+
+void heapsort (int arr[], int n)
+{
+    int size = n;
+    while (size > 1)
+    {
+        swap(arr[size], arr[1]);
+        size--;
+
+        heapify(arr, size, 1);
+    }
+    
+}
 
 int main(int argc, char const *argv[])
 {
@@ -130,18 +145,34 @@ int main(int argc, char const *argv[])
     // h.print();
 
     int arr[5] = {-1, 58, 76, 54, 12};
-     int n = 5;
+     int n = 4;
 
     for (int i = n/2; i > 0; i--)
     {
         heapify(arr, n, i);
     }
 
-    for (int i = 1; i < n; i++)
+    heapsort(arr, n);
+
+    for (int i = 1; i <= n; i++)
     {
         cout<<arr[i]<<" ";
     }
+    cout<<endl;
     
+    cout<<"Using priority queue"<<endl;
+    priority_queue<int>q;
+    q.push(3);
+    q.push(30);
+    q.push(112);
+    q.push(4);
+    cout<<q.top()<<endl;
+    q.pop();
+    cout<<q.top()<<endl;
+
+    
+    
+
 
     
     
