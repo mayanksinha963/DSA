@@ -71,6 +71,8 @@ public:
         
     }
 
+    
+
     void print ()
     {
         for (int i = 1; i <= size; i++)
@@ -83,6 +85,32 @@ public:
     
 };
 
+void heapify(int arr[], int size, int i)
+    {
+        int targeted = i;
+        int left = i*2;
+        int right = i*2 +1;
+
+        if (left < size && arr[left]> arr[targeted])
+        {
+            targeted = left;
+        }
+
+        if (right < size && arr[right] > arr[targeted])
+        {
+            targeted = right;
+        }
+        
+        if (targeted != i)
+        {
+            swap(arr[targeted], arr[i]);
+            heapify(arr, size, targeted);
+        }
+        
+        
+
+    }
+
 int main(int argc, char const *argv[])
 {
     heap h;
@@ -90,15 +118,32 @@ int main(int argc, char const *argv[])
     h.insertion(12);
     h.insertion(58);
     h.insertion(76);
-    h.print();
+    //h.print();
 
     cout<<endl;
 
-    h.deletion();
-    h.deletion();
-    h.deletion();
-    h.deletion();
-    h.deletion();
-    h.print();
+    // h.deletion();
+    // h.deletion();
+    // h.deletion();
+    // h.deletion();
+    // h.deletion();
+    // h.print();
+
+    int arr[5] = {-1, 58, 76, 54, 12};
+     int n = 5;
+
+    for (int i = n/2; i > 0; i--)
+    {
+        heapify(arr, n, i);
+    }
+
+    for (int i = 1; i < n; i++)
+    {
+        cout<<arr[i]<<" ";
+    }
+    
+
+    
+    
     return 0;
 }
