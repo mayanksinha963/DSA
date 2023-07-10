@@ -144,9 +144,13 @@ int main(int argc, char const *argv[])
     // h.deletion();
     // h.print();
 
-    int arr[5] = {-1, 58, 76, 54, 12};
-     int n = 4;
+    // int arr[5] = {-1, 58, 76, 54, 12};
+    //  int n = 4;
 
+     int arr[] = {-1, 7, 10, 4, 3, 20, 15};
+     int n =6;
+
+    
     for (int i = n/2; i > 0; i--)
     {
         heapify(arr, n, i);
